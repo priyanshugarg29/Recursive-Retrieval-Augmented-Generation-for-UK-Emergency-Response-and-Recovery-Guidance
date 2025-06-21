@@ -63,7 +63,7 @@ def call_gemini(prompt):
     headers = {"Content-Type": "application/json"}
     data = {"contents": [{"parts": [{"text": prompt}]}]}
     api_key = st.secrets["GEMINI_API_KEY"]
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={api_key}"
     response = requests.post(url, headers=headers, data=json.dumps(data))
     if response.status_code == 200:
         return response.json()['candidates'][0]['content']['parts'][0]['text']
