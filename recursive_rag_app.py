@@ -51,10 +51,10 @@ def load_retriever():
         encode_kwargs={"normalize_embeddings": True}
     )
     return FAISS.load_local(
-        "emergency_guidance_index",
-        embedding_model,
-        allow_dangerous_deserialization=True
-    ).as_retriever(search_type="similarity", search_kwargs={"k": 4})
+    "emergency_guidance_index",  # correct path relative to repo root
+    embeddings=embedding_model,
+    allow_dangerous_deserialization=True
+).as_retriever(search_type="similarity", search_kwargs={"k": 4})
 
 retriever = load_retriever()
 
